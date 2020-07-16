@@ -5,10 +5,32 @@
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{% static "css/base.css" %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 </head>
 <body>
 <div id="header">
     <span class="logo">Peek</span>
+    {% if request.user.is_authenticated %}
+    <ul class="menu">
+        <li {% if section == "dashboard" %} class="selected" {% endif %}>
+            <a href="{% url "dashboard" %}">My dashboard</a>
+        </li>
+        <li {% if section == "images" %} class="selected" {% endif %}>
+            <a href="#">Images</a>
+        </li>
+    <li {% if section == "people" %} class="selected" {% endif %}>
+            <a href="#">People</a>
+        </li>
+    </ul>
+{% endif %}
+<span class="user">
+    {% if request.user.is_authenticated %}
+    Hello {{ request.user.first_name }},
+    <a href="{% url "logout" %}">Logout</a>
+    {% else %}
+    <a href="{% url "login" %}">Login</a>
+    {% endif %}
+</span>
 </div>
 <div id="content">
     {% block content %}
