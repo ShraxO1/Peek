@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'social_django',
     'django_extensions',
+    'images.apps.ImagesConfig',
 ]
 
 MIDDLEWARE = [
@@ -90,8 +91,8 @@ DATABASES = {
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'account.authentication.EmailAuthBackend',
-    'social_core.backends.facebook.FacebookOAuth2',
-    'social_core.backends.facebook.TwitterOAuth',
+    #'social_core.backends.facebook.FacebookOAuth2',
+    #'social_core.backends.facebook.TwitterOAuth',
 ]
 
 AUTH_PASSWORD_VALIDATORS = [
